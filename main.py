@@ -7,7 +7,7 @@ from flight_search import FlightSearch
 data_manager = DataManager()
 flight_search=FlightSearch()
 sheet_data = data_manager.get_destination_data()
-ORIGIN_CITY_IATA = 'LON'
+ORIGIN_CITY_IATA = "LON"
 ACCOUNT = os.getenv('twilio_account')
 TOKEN = os.getenv('twilio_token')
 NUMBER = os.getenv('phone_number')
@@ -20,7 +20,7 @@ if sheet_data[0]['iataCode']== '':
 
 for destination in sheet_data:
      flight = flight_search.flight_info(
-        "LON",
+        ORIGIN_CITY_IATA,
         destination['iataCode'],
      )
      if flight.price < destination['lowestPrice']:
